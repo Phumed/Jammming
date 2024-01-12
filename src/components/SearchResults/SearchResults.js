@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Track from "../Track/Track";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 
 function SearchResults({ data, search, addToMusicSelected, topTracks }) {
   //console.log(topTracks[0].id);
+  // border ? "border-bottom border-secondary" : "";
   return (
     <Container>
-      <Row>
+      <Row className="border-bottom border-secondary mb-3">
         <h2>Result</h2>
       </Row>
       <Row>
@@ -30,22 +30,6 @@ function SearchResults({ data, search, addToMusicSelected, topTracks }) {
             );
           })}
         </ListGroup>
-
-        {/* <ul>
-          {topTracks.map((item, index) => {
-            return (
-              <Track
-                key={index}
-                id={index}
-                name={item.name}
-                artist={item.album.artists[0].name}
-                album={item.album.name}
-                addToMusicSelected={addToMusicSelected}
-                state="addingState"
-              />
-            );
-          })}
-        </ul> */}
       </Row>
     </Container>
   );

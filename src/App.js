@@ -3,7 +3,6 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import SearchResults from "./components/SearchResults/SearchResults";
 import Playlist from "./components/Playlist/Playlist";
 import Tracklist from "./components/Tracklist/Tracklist";
-import Track from "./components/Track/Track";
 import data from "./data.js";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -51,7 +50,7 @@ function App() {
           Authorization: `Bearer ${accessToken}`,
         },
       };
-      var artistID = await fetch(
+      let artistID = await fetch(
         `https://api.spotify.com/v1/search?q=${text}&type=artist`,
         searchParameters
       )
@@ -72,7 +71,7 @@ function App() {
           setTopTracks(data.tracks);
         });
       //console.log("Top-Track: ");
-      //console.log(topTracks);
+      console.log(topTracks);
       //Display those album to users
       setText("");
     }
@@ -86,7 +85,10 @@ function App() {
   const handleAddToSpotify = (event) => {
     event.preventDefault();
     console.log("ADD TO SPOTIFY");
-    if (playListName === "") alert("You have not inserted playlist name yet");
+    console.log(musicSelected);
+
+    if (playListName === "" || musicSelected.length === 0)
+      alert("You must insert both playlist name and music");
     else {
       const newPlayList = {
         name: playListName,
@@ -132,7 +134,7 @@ function App() {
       <Row>
         <Navbar expand="lg" className="bg-body-tertiary">
           <Container className="d-flex justify-content-center">
-            <Navbar.Brand className="fw-bold">Spotify Top-Track</Navbar.Brand>
+            <Navbar.Brand className="fw-bold">Jammming</Navbar.Brand>
           </Container>
         </Navbar>
       </Row>
@@ -145,20 +147,22 @@ function App() {
           />
         </Col>
       </Row>
-      <Row className="mt-4">
+      <Row className="mt-4 mb-5">
         <Col xs={12} md={6}>
-          <SearchResults
-            data={data}
-            search={text}
-            addToMusicSelected={addToMusicSelected}
-            topTracks={topTracks}
-          />
+          <Row>
+            <SearchResults
+              data={data}
+              search={text}
+              addToMusicSelected={addToMusicSelected}
+              topTracks={topTracks}
+            />
+          </Row>
         </Col>
-        <Col xs={12} md={6}>
-          <Row className="mb-4">
+        <Col xs={12} md={6} className="mt-md-0 mt-3">
+          <Row className="mb-2">
             <Playlist playList={playList} />
           </Row>
-          <Row>
+          <Row className="mb-md-0 mb-5">
             <Col xs={12}>
               <Tracklist
                 musicSelected={musicSelected}
