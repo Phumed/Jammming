@@ -14,7 +14,7 @@ function SearchBar({ handleSubmit, handleChange, text }) {
               <input
                 onChange={handleChange}
                 value={text}
-                placeholder="Which artist do you want to see their top tracks?"
+                placeholder="Enter an artist for their top tracks!"
                 className="w-md-50 w-100 py-2"
                 style={{ textAlign: "center" }}
               />
