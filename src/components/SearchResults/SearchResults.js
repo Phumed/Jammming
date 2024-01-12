@@ -13,7 +13,7 @@ function SearchResults({ data, search, addToMusicSelected, topTracks }) {
         <h2>Result</h2>
       </Row>
       <Row>
-        <ListGroup>
+        <ListGroup className="ms-2 ms-md-0">
           {topTracks.map((item, index) => {
             return (
               <ListGroup.Item>

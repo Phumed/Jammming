@@ -40,7 +40,10 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Search for " + text);
-    if (text === "") alert("Please filled some artist name");
+    if (text === "")
+      alert(
+        "Drop some artist names, and let's fill your Spotify with tunes! 🎵"
+      );
     else {
       //Get request using search to get the Artist ID
       var searchParameters = {
@@ -88,7 +91,7 @@ function App() {
     console.log(musicSelected);
 
     if (playListName === "" || musicSelected.length === 0)
-      alert("You must insert both playlist name and music");
+      alert("Playlist name and track, please! 🎶");
     else {
       const newPlayList = {
         name: playListName,
@@ -113,7 +116,7 @@ function App() {
     console.log(checkKey);
     if (!checkKey)
       setMusicSelected((musicSelected) => [topTracks[key], ...musicSelected]);
-    else alert("You have already had this music in your playlist");
+    else alert("This track's already on your Spotify playlist! 🎵");
   };
 
   const removeFromMusicSelected = (key) => {

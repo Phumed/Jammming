@@ -26,7 +26,7 @@ function Tracklist({
           />
         </Row>
         <Row className="mt-2">
-          <ListGroup>
+          <ListGroup className="ms-1">
             {musicSelected.map((items) => {
               return (
                 <ListGroup.Item>
